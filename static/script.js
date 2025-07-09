@@ -3,7 +3,7 @@ let chatHistory = [];  // Chat memory
 function sendToBackend() {
   const text = document.getElementById('textInput').value;
 
-  fetch('http://127.0.0.1:8000/talk', {
+  fetch('https://funnyfriend.onrender.com/talk', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text })
@@ -87,7 +87,7 @@ function initMap() {
 function findNearbyDoctors() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
-      fetch('http://127.0.0.1:8000/nearby_doctors', {
+      fetch('https://funnyfriend.onrender.com/nearby_doctors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -201,7 +201,7 @@ function startVoiceInput() {
 //live jokes -----------------------------------------------------------------------------------------------------------
 async function getLiveJoke() {
   try {
-    const resp = await fetch('http://127.0.0.1:8000/live_joke');
+    const resp = await fetch('https://funnyfriend.onrender.com/live_joke');
     const data = await resp.json();
 
     const joke = data.joke;
@@ -217,7 +217,7 @@ async function getLiveJoke() {
 //live news ------------------------------------------------------------------------------------------------------------
 async function getLiveNews() {
   try {
-    const resp = await fetch('http://127.0.0.1:8000/live_news');
+    const resp = await fetch('https://funnyfriend.onrender.com/live_news');
     const data = await resp.json();
 
     const box = document.getElementById('responseBox');
@@ -298,7 +298,7 @@ function sendLLMRequest(text) {
   // Add user message to history
   chatHistory.push({ role: "user", content: text });
 
-  fetch("http://127.0.0.1:8000/llm_chat", {
+  fetch("https://funnyfriend.onrender.com/llm_chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ messages: chatHistory })
@@ -341,7 +341,7 @@ function handleSmartCommand() {
 function runSmartCommand(text) {
   const box = document.getElementById("responseBox");
 
-  fetch("http://127.0.0.1:8000/device_control", {
+  fetch("https://funnyfriend.onrender.com/device_control", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: text })
@@ -450,7 +450,7 @@ function findPlacesByEmotion() {
     return;
   }
 
-  fetch('http://127.0.0.1:8000/detect_emotion', {
+  fetch('https://funnyfriend.onrender.com/detect_emotion', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text })
@@ -490,7 +490,7 @@ function showCategoryButtons(emotion) {
 }
 
 function fetchPlaces(placeType) {
-  fetch('http://127.0.0.1:8000/find_places', {
+  fetch('https://funnyfriend.onrender.com/find_places', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ lat: userLat, lng: userLng, place_type: placeType })
