@@ -317,7 +317,7 @@ def control_device():
 #webhook for google assistent___________________________________________________________________________________________
 #-----------------------------------------------------------------------------------------------------------------------
 
-BACKEND_BASE_URL = 'http://localhost:8000'  # ✅ Replace with your deployed backend URL
+BACKEND_BASE_URL = 'https://funnyfriend.onrender.com'  # ✅ Replace with your deployed backend URL
 session_store = {}
 @app.route('/webhook', methods=['POST'])
 def webhook():
