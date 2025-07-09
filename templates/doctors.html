@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nearby Doctors with Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    #map {
+      height: calc(100vh - 140px);
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <span class="navbar-brand mb-0 h1">Nearby Doctors (with Map)</span>
+      <a href="/" class="btn btn-outline-light">Back to Funny Friend</a>
+    </div>
+  </nav>
+
+  <div id="map"></div>
+
+  <div class="container mt-3">
+    <button class="btn btn-primary w-100 mb-2" onclick="findNearbyDoctors()">Find Nearby Doctors</button>
+    <ul class="list-group" id="doctorList"></ul>
+  </div>
+
+  <!-- Load Google Maps API with initMap callback -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjmBOw2eVdi6TQwJdpLzXKTgBm754FuMI&callback=initMap" async defer></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

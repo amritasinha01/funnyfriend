@@ -1,0 +1,44 @@
+# Virtual Environment
+Lib/
+Scripts/
+venv/
+.venv/
+env/
+ENV/
+
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyCharm project files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model/Temp/Backup files — REMOVE *.pkl here since you need it
+*.h5
+*.sqlite3
+*.db
+*.log
+*.bak
+*.tmp
+
+# Node/npm files (optional)
+node_modules/
+
+# Compiled C extensions
+*.so
+
+# Secrets
+.env
+
+# Personal config files
+*.swp
+*.swo
+
+
+

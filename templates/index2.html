@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Funny Friend - Yaymoji AI 🤖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+ <!--  CSS (via Flask) -->
+<link rel="stylesheet" href="{{ url_for('static', filename='style 2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="custom-header">
+  <div class="header-title">
+    <h2 class="mb-0"> 🤖</h2>
+  </div>
+  <!-- Hamburger stays at right automatically -->
+  <button class="btn d-md-none ms-auto text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#smartSidebarOffcanvas" aria-controls="smartSidebarOffcanvas"
+    style="
+      background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+    ">
+    ☰
+  </button>
+</header>
+
+
+<!-- ✅ Mobile Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-start sidebar-brick-wall" tabindex="-1" id="smartSidebarOffcanvas" aria-labelledby="offcanvasLabel"
+     style="top: 80px;">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="display: block; margin: 0 auto;"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <!-- ✅ Smart Control -->
+    <div class="card smart-wood-card mb-4">
+      <!-- Wooden Planks -->
+      <div class="wood-plank"></div>
+      <div class="wood-plank"></div>
+      <div class="wood-plank"></div>
+
+      <!-- Corner Pins -->
+      <div class="pin pin-tl"></div>
+      <div class="pin pin-tr"></div>
+      <div class="pin pin-bl"></div>
+      <div class="pin pin-br"></div>
+
+      <!-- ✅ Smart Control Content -->
+      <div class="smart-wood-content">
+        <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 10px;">Smart Control</h5>
+        <input type="text" id="smartCommandMobile" class="form-control mb-2" placeholder="e.g. turn on the fan" />
+        <div class="d-flex justify-content-between">
+          <button onclick="handleSmartCommand()" class="smart-btn smart-btn-run"> ▶️ Run </button>
+          <button onclick="speakSmartCommand()" class="smart-btn smart-btn-speak">🎤 Speak</button>
+        </div>
+        <div class="text-center mt-3" style="font-size: 40px;">
+          <div id="fanIconMobile" style="display: inline-block; font-size: 48px;">🌀</div>
+          <div id="lightIconMobile" style="display: inline-block; font-size: 48px; color: #666666; margin-left: 20px;">💡</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ✅ About Smart Control -->
+    <div class="smart-info-card">
+      <h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">About Smart Control</h5>
+      <p>
+        Smart Control lets you interact with simulated devices using voice or text — like
+        <em>"turn on/off the fan"</em> <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
+      </p>
+      <p>
+        It’s a fun, browser-based smart home simulation — great for testing, learning, or just playing around.
+      </p>
+      <p>
+        <strong>Tech Tip:</strong> This setup can be extended to real IoT devices via HTTP or MQTT (e.g., with ESP32).
+      </p>
+    </div>
+
+
+    <!-- ✅ FAQ Section -->
+    <div class="faq-card">
+      <h6 class="font-weight-bold">❓ FAQ</h6>
+      <ul class="pl-3" style="list-style-type: disc; font-size: 0.85rem; color: #444;">
+        <li><strong>What can I say?</strong> Try commands like <em>"turn on the light"</em>.</li>
+        <li><strong>Joke not working?</strong> Check your mic permission or refresh.</li>
+        <li><strong>Chat seems slow?</strong> Cloud LLM may take a second or two.</li>
+        <li><strong>Can "smart control" control real devices?</strong> Yes! The Smart Control panel is designed for both simulation and real IoT integration.
+          With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!--  Desktop Sidebar (Fixed) + Main Content ---------------------------------------------------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="padding-top: 100px;">
+  <div class="row">
+    <!-- Sidebar (Desktop Only) --------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <nav class="col-md-4 d-none d-md-block sidebar-base sidebar-brick-wall" style="position: fixed; top: 70px; left: 0; width: 400px; height: calc(100vh - 115px);">
+  <!-- ✅ Same Sidebar Content as Mobile -->
+
+      <!--  Smart Control -->
+  <div class="card smart-wood-card mb-4">
+  <!-- Wooden Planks -->
+  <div class="wood-plank"></div>
+  <div class="wood-plank"></div>
+  <div class="wood-plank"></div>
+
+  <!-- Corner Pins -->
+  <div class="pin pin-tl"></div>
+  <div class="pin pin-tr"></div>
+  <div class="pin pin-bl"></div>
+  <div class="pin pin-br"></div>
+
+  <!-- ✅ Smart Control Content (Now Visible) -->
+  <div class="smart-wood-content">
+    <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 10px;">Smart Control</h5>
+    <input type="text" id="smartCommandDesktop" class="form-control mb-2" placeholder="e.g. turn on the fan" />
+    <div class="d-flex justify-content-between">
+      <button onclick="handleSmartCommand()" class="smart-btn smart-btn-run">▶️ Run</button>
+      <button onclick="speakSmartCommand()" class="smart-btn smart-btn-speak">🎤 Speak</button>
+    </div>
+    <div class="text-center mt-3" style="font-size: 40px;">
+      <div id="fanIconDesktop" style="display: inline-block; font-size: 48px;">🌀</div>
+      <div id="lightIconDesktop" style="display: inline-block; font-size: 48px; color: #666666; margin-left: 20px;">💡</div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="smart-info-card">
+  <h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">About Smart Control</h5>
+  <p>
+    Smart Control lets you interact with simulated devices using voice or text — like
+    <em>"turn on/off the fan"</em> <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
+  </p>
+  <p>
+    It’s a fun, browser-based smart home simulation — great for testing, learning, or just playing around.
+  </p>
+  <p>
+    <strong>Tech Tip:</strong> This setup can be extended to real IoT devices via HTTP or MQTT (e.g., with ESP32).
+  </p>
+</div>
+
+
+  <!--  FAQ Section -->
+      <div class="faq-card">
+  <h6 class="font-weight-bold">❓ FAQ</h6>
+  <ul class="pl-3" style="list-style-type: disc; font-size: 0.85rem; color: #444;">
+    <li><strong>What can I say?</strong> Try commands like <em>"turn on the light"</em>.</li>
+    <li><strong>Joke not working?</strong> Check your mic permission or refresh.</li>
+    <li><strong>Chat seems slow?</strong> Cloud LLM may take a second or two.</li>
+    <li><strong>Can "smart control" control real devices?</strong> Yes! The Smart Control panel is designed for both simulation and real IoT integration.
+      With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
+    </li>
+  </ul>
+</div>
+
+    </nav>
+
+ <!--  Main Content Area -------------------------------------------------------------------------------------------------------------------------------------------------------->
+<main class="col-md-8 offset-md-3">
+  <div class="container">
+    <!--  Main Content Starts Here ---------------------------------------------------------------------------------------------------------------------------------------------------->
+    <h1 class="text-center">
+  ✨
+  <span style="font-weight: 900; font-size: 3rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">
+    Yaymoji
+  </span>
+  🤖
+</h1>
+
+
+    <p class="text-center mt-3 mb-4" style="color: #859E91; font-size: 1rem;font-weight: bold;text-align: center;margin-bottom: 10px;">
+      Your cheerful AI buddy that listens, jokes, and reacts with emotion. Say hi, get a joke, or hear the latest news!
+    </p>
+
+    <!-- Text Input -->
+    <div class="d-flex justify-content-center mb-4">
+      <input id="textInput" class="form-control" style="max-width: 400px;" placeholder="😊 Tell about what you feel or emotion..." />
+    </div>
+
+    <!-- Responds Based on What You Type or Say -->
+    <h5 class="section-title text-center mt-5 mb-4">🎙️ Talk Based on Your Input</h5>
+
+    <div class="row g-4 justify-content-center">
+  <!-- Local AI Jokes Card -->
+  <div class="col-md-6">
+    <div class="smart-info-card p-5">
+      <!-- Card Content -->
+      <div>
+        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 10px;">Local AI Jokes</h5>
+        <p style="color: #3A5A40; font-size: 0.9rem;font-weight: bold;text-align: center;margin-bottom: 10px;">Custom AI trained for emotion-based jokes</p>
+        <div class="d-flex justify-content-center">
+          <button onclick="sendToBackend()" class="round-btn">⌨️</button>
+          <button onclick="startVoiceInput()" class="round-btn">🎤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤖 Ask Funny Friend Card -->
+  <div class="col-md-6">
+    <div class="smart-info-card p-5">
+      <!-- Card Content -->
+      <div>
+        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 10px;">🤖 Ask Funny Friend</h5>
+        <p style="color: #3A5A40; font-size: 0.9rem;font-weight: bold;text-align: center;margin-bottom: 10px;">Fun talks powered by Cloud LLM</p>
+        <div class="d-flex justify-content-center">
+          <button onclick="askLLMText()" class="round-btn">⌨️</button>
+          <button onclick="askLLMSpeak()" class="round-btn">🎤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 justify-content-center mt-3">
+  <button class="custom-btn d-flex align-items-center justify-content-center"
+    style="padding: 12px 20px; border-radius: 15px; min-width: auto; max-width: 240px;"
+    onmousedown="this.style.transform='translateY(4px)'"
+    onmouseup="this.style.transform='translateY(4px)'"
+    onclick="findPlacesByEmotion()">
+    <img src="https://img.icons8.com/color/48/000000/google-maps.png" alt="map" width="24" height="24" style="margin-right: 10px;" />
+    <span>Vibe Match Places</span>
+  </button>
+</div>
+
+
+
+    <!--  Independent Features -->
+    <h5 class="section-title text-center mt-5 mb-4">📡 Quick Fun & News</h5>
+   <div class="d-flex flex-row justify-content-center align-items-center">
+  <button class="custom-btn me-2" onclick="getLiveJoke()">🎲 Live Joke</button>
+  <button class="custom-btn" onclick="getLiveNews()">📰 Live News</button>
+</div>
+
+    <!-- Chat History Box -------------------------------------------------------------------------->
+    <h5 class="section-title text-center mt-5 mb-3">Chat Box</h5>
+    <div id="responseBox" class="response-box mx-auto" style="width: 100%; max-width: 900px; max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ccc; border-radius: 15px; background: #fdfdfd; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 1rem; line-height: 1.4;"></div>
+    <!--  Main Content Ends Here ----------------------------------------------------------------------------------------------------------------------------------->
+  </div>
+</main>
+
+
+
+<!-- Footer ----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<footer class="fixed-footer">
+  <div class="footer-content">
+    <span>All rights reserved © 2025</span>
+    <!-- ✅ Theme Switcher Dropdown -->
+    <div class="dropdown">
+    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    🎨 Theme
+  </a>
+      <ul class="dropdown-menu dropdown-menu-end beautiful-dropdown">
+        <li><a class="dropdown-item" href="/">🎩 Classic Theme</a></li>
+        <li><a class="dropdown-item" href="/woodland_mix">🌳 Woodland Mix</a></li>
+        <li><a class="dropdown-item" href="/playful">🎨 Playful Theme</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+<!-- Bootstrap 5 JS (for Offcanvas) ------------------------------------------------------------------------------------------------------------------------------------------>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JS (via Flask) -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<!-- Fan Animation CSS  -->
+<style>
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+
+</style>
+
+</body>
+</html>

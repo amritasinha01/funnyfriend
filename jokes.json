@@ -1,0 +1,587 @@
+[
+  {
+    "joke": "Some people climb corporate ladders. Others decorate them for fun.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Smiling during chaos is considered a leadership skill in some offices.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "The best way to win workplace arguments? Bring donuts.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Everyone wants honesty, but nobody likes unfiltered Wi-Fi or feedback.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Nothing brightens a day like realizing everyone else is equally clueless.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Being optimistic is just advanced-level denial with a smile.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Success is often just knowing when to nod and let others feel brilliant.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "The best office strategy? Appear busy while doing nothing efficiently.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Nothing bonds colleagues faster than a shared dislike for meetings.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Laughter is contagious. Fortunately, so is pretending to be productive.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "A calm mind and a full inbox cannot exist in the same person.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Smiling through nonsense is a highly underrated survival skill.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Office wisdom: The best ideas often arrive after deadlines.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "It’s comforting to know even experts are just Googling faster.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Most problems vanish after coffee. The rest need Wi-Fi.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Patience is when your emails load slower than your tolerance.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Life’s too short to reply to every email. Prioritize snacks instead.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Teamwork means hiding together during surprise audits.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "The biggest office achievement? Laughing without getting caught on camera.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "Optimism is expecting the Wi-Fi to work perfectly during video calls.",
+    "emotion": "happy"
+  },
+  {
+    "joke": "I told myself I’d get up early today… it was a lie, but I believed in me for a second.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "They said money can't buy happiness. Clearly, they never paid their electricity bill on time.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "Why does my paycheck disappear faster than my motivation on Monday mornings?",
+    "emotion": "sad"
+  },
+  {
+    "joke": "My wallet is like an onion. Opening it makes me cry.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I started a savings account… it’s just me saving screenshots of things I can’t afford.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I told my friends I’m fine. My fridge, however, knows the truth.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "That moment when you realize the 'low battery' warning applies to your energy too.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I planned my weekend perfectly — sleep, eat, overthink, repeat.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "Nothing hits harder than realizing tomorrow is Monday… again.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I'm on a seafood diet. I see food, I can't afford it.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "My life is like a browser — 19 tabs open, 3 are frozen, and I have no idea where the music is coming from.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I bought a plant to feel responsible. Now we’re both not doing well.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "My morning routine: Wake up. Regret waking up. Coffee.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I’m not lazy. I’m just on energy-saving mode… permanently.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "The only exercise I’ve done this week is running out of patience.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I asked life for a sign. It sent me a 'Wi-Fi Disconnected' notification.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "My to-do list is just a list of things I pretend I’ll do later.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "When people say 'follow your dreams,' I go back to sleep.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "I smile at my problems. Then I realize my problems smile back.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "Therapist: ‘Do you hear voices in your head?’ Me: Only when I forget my headphones.",
+    "emotion": "sad"
+  },
+  {
+    "joke": "My brain says, ‘Stay calm.’ My ego says, ‘Say it louder.’ Guess who wins?",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Nothing triggers me faster than seeing someone do my job… badly.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Why argue logically when passive-aggressive sarcasm exists?",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Some people bring happiness wherever they go. Others… whenever they go.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Deep down, I’m a peaceful person. Very, very deep down. Like, unreachable.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "I don’t hold grudges. I just remember every tiny detail forever.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Office politics: Where everyone smiles while sharpening their knives.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "My revenge plan? Live well. And loudly.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Sometimes I watch people succeed and think, 'I should have been their villain origin story.'",
+    "emotion": "angry"
+  },
+  {
+    "joke": "I love peace. Until someone corrects my grammar.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "My resting face looks like I’m already in a heated argument.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "You know you’ve matured when your favorite revenge is 'ignoring them completely.'",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Nothing fuels me more than proving someone wrong. I run on pure spite.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "I’m not controlling. I just get very angry when things don’t go my way.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "They said anger is bad for health. But sarcasm keeps me alive.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Some people meditate to stay calm. I just draft emails I’ll never send.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Trust issues? No, I just remember everything you’ve ever done to me.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "In my head, I’ve already won 47 arguments today.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Anger issues? No, I just expect people to use common sense.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "I’m the villain in some people’s story. Honestly, I’m fine with that.",
+    "emotion": "angry"
+  },
+  {
+    "joke": "Some people go to therapy. I just talk to myself… we both laugh.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I don’t have trust issues. I have ‘seen too much’ issues.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "They say money can’t buy happiness… but I’d love to prove that wrong myself.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I’m not addicted to my phone. It’s addicted to me.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "My personality changes based on who’s around. It’s called adaptability. Or acting. Same thing.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I'm excellent at multitasking. I can waste time, be unproductive, and procrastinate all at once.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "Deep down, I know I’d be the villain in someone else’s story. And honestly, I’d be a fun villain.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I don’t lie. I just creatively edit the truth.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "Self-care is ignoring everyone for the entire weekend.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I’m very humble. In fact, I’m probably the most humble person I know.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "Overthinking is my cardio. I burn zero calories but exhaust myself daily.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I’m not lazy. I just rest before I get tired.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "My toxic trait? Thinking everything will somehow work itself out. Eventually. Maybe.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I mastered emotional detachment. Until the pizza delivery is late.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "People say 'follow your heart'. My heart says 'nap first, regret later.'",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I’m great at setting boundaries… for everyone except myself.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "Manipulative? No. I just strongly encourage people to do what I want.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "My brain: You should sleep early tonight. Also my brain at 3 AM: Remember that embarrassing thing from 10 years ago?",
+    "emotion": "funny"
+  },
+  {
+    "joke": "I don’t fear commitment. I fear committing to the wrong Wi-Fi password.",
+    "emotion": "funny"
+  },
+  {
+    "joke": "Silence is powerful. It leaves people wondering which mistake to confess first.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Truth sounds like hate to those who fear it.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Courage is knowing it will hurt, and doing it anyway.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Confidence isn’t loud. It just doesn’t flinch.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Lions don’t lose sleep over opinions of sheep.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Confidence is walking into a room and forgetting why… but still staying like it was planned.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Silence is powerful. It forces people to create their own drama.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Truth often arrives late, but it never knocks before entering.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Courage is doing something dumb… and then acting like it was genius all along.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "The loudest in the room rarely owns the room.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Lions don’t need to explain themselves. They just yawn louder.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "A sharp tongue cuts deeper than a sharp sword, but it also causes more applause.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Some rules exist only to test how creative the breaking can be.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Walking away isn’t weakness; it’s just a dramatic plot twist.",
+    "emotion": "bold"
+  },
+  {
+    "joke": "Confidence is silent. But sarcasm? That’s an entire orchestra.",
+    "emotion": "bold"
+  },
+  {
+  "joke": "Criticism works best as a trophy collection for greatness.",
+  "emotion": "bold"
+  },
+  {
+    "joke": "Life is like a software update. Long, pointless, and nobody asked for it.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Sometimes doing nothing feels like a full-time job.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "The universe is expanding… just like my to-do list.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Existence is mostly just finding new ways to wait for Wi-Fi.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Being neutral isn't boring. It’s called emotional power saving mode.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Earth revolves around the sun. Humans revolve around deadlines.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "If life gives lemons, just stare at them. Effort takes energy.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Some people chase dreams. Others chase Wi-Fi signals.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Overthinking is just cardio for the brain… without the fitness benefits.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Why cry over spilled milk? It’s already gone. Accept. Move on. Repeat.",
+    "emotion": "neutral"
+  },
+  {
+    "joke": "Some thoughts should really come with an expiration date.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Common sense is like Wi-Fi. Some people just can’t seem to connect.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Some ideas sound smarter inside the brain than outside of it.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Procrastination is the art of keeping up with yesterday… badly.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Not every light bulb in the box needs to be turned on at once.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Some conversations are just two brain cells doing a trust fall.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Mistakes were made. Repeatedly. With enthusiasm.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "It takes real talent to trip over flat surfaces repeatedly.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Every group has that one person… and sometimes it’s the whole group.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "If the plan sounds flawless, double-check for hidden stupidity.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Sometimes the elevator doesn’t go all the way up, and that’s okay.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Some questions exist only to confirm the lack of answers.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Brainstorms occasionally include a light drizzle of nonsense.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Multitasking: doing multiple things wrong at the same time.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Some decisions come straight from the department of bad ideas.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Gravity works… even on falling IQ points.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Some puzzles are missing pieces. Others never had them to begin with.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Sometimes thoughts bounce around… and then straight out the window.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "If wisdom is gold, some conversations are definitely running on store credit.",
+    "emotion": "dumb"
+  },
+  {
+    "joke": "Accidentally proving Newton’s law… by walking into walls.",
+    "emotion": "dumb"
+  },
+   {"joke": "Why overthink in silence when you can do it out loud on a Zoom call?", "emotion": "anxiety"},
+  {"joke": "Asked my brain to relax… it sent me 23 new worries instead.", "emotion": "anxiety"},
+  {"joke": "My mood swings have frequent flyer miles.", "emotion": "depression"},
+  {
+    "joke": "I told my sadness we’re on a break. It packed its bags and left!",
+    "emotion": "depression"
+  },
+  {
+    "joke": "Why don’t we ever tell secrets on a farm? Because the potatoes have eyes and the corn has ears!",
+    "emotion": "depression"
+  },
+  {
+    "joke": "I asked my pillow why it’s so supportive. It said, 'I’ve got your back… and your head!'",
+    "emotion": "depression"
+  },
+  {
+    "joke": "My happiness took a day off. So I hired pizza as a temporary replacement.",
+    "emotion": "depression"
+  },
+  {
+    "joke": "If hugs were Wi-Fi, I’d never disconnect!",
+    "emotion": "depression"
+  },
+  {
+    "joke": "Why don’t clouds ever get stressed? Because they just let everything go and drift.",
+    "emotion": "depression"
+  },
+  {
+    "joke": "I made a deal with my anxiety: I’ll worry tomorrow, today I’ll nap.",
+    "emotion": "depression"
+  },
+  {
+    "joke": "Why did the sun apply for a job? It wanted to brighten everyone’s day!",
+    "emotion": "depression"
+  },
+  {
+    "joke": "If Monday feels heavy, just remember… you survived every Monday so far!",
+    "emotion": "depression"
+  },
+  {
+    "joke": "I told my brain, ‘Let’s think positive!’ It said, ‘Fine, you’re positively amazing.’",
+    "emotion": "depression"
+  },
+  {"joke": "Stress is my cardio… I’ve been running in circles all week.", "emotion": "stress"},
+  {"joke": "Multitasking: stress-eating and stress-scrolling at the same time.", "emotion": "stress"},
+  {"joke": "Grateful for the Wi-Fi that held up during my emotional breakdown.", "emotion": "gratitude"},
+  {"joke": "Appreciating little things, like autocorrect saving me from sending 'duck you' to my boss.", "emotion": "gratitude"},
+  {"joke": "Finally done with my tasks… now I can return to my favorite hobby: ignoring notifications.", "emotion": "relief"},
+  {"joke": "That 'sent' email sound is music to my ears after hitting submit.", "emotion": "relief"},
+  {"joke": "Hope is like Wi-Fi… weak at times but somehow still connects.", "emotion": "hope"},
+  {"joke": "Still believing that tomorrow's to-do list will be magically shorter.", "emotion": "hope"},
+  {"joke": "Sometimes I miss people… then I remember, I've met people.", "emotion": "loneliness"},
+  {"joke": "My plants are thriving. They're the only ones I talk to daily.", "emotion": "loneliness"},
+  {"joke": "Told myself 'treat yourself'… now my wallet and conscience are both empty.", "emotion": "guilt"},
+  {"joke": "Guilt trip level unlocked: Remembering that unread email from 6 months ago.", "emotion": "guilt"},
+  {"joke": "Remember that time waving back at someone who wasn't waving at you? Happens every night.", "emotion": "shame"},
+  {"joke": "Embarrassment tip: If you trip, just start jogging like it was part of the plan.", "emotion": "shame"},
+  {"joke": "Googled 'how to focus'… now know everything about dolphins.", "emotion": "curiosity"},
+  {"joke": "Started with one YouTube video. Three hours later, ready to build a castle.", "emotion": "curiosity"},
+  {"joke": "Positive affirmation: 'Maybe I'll nap later' counts, right?", "emotion": "motivation"},
+  {"joke": "Motivation activated… until the coffee cooled down.", "emotion": "motivation"},
+  {"joke": "Opening up feels like sending an email with 'Reply All' by mistake.", "emotion": "vulnerability"},
+  {"joke": "Being vulnerable: That moment when you realize the mic wasn't muted during the call.", "emotion": "vulnerability"},
+  {
+    "joke": "Why don’t we tell secrets on a farm? Because the potatoes have eyes and the corn has ears!",
+    "emotion": "anxiety"
+  },
+  {
+    "joke": "I told my stress it has two options: leave me or pay rent. It packed its bags.",
+    "emotion": "anxiety"
+  },
+  {
+    "joke": "My brain said ‘focus’ but my heart whispered ‘nap’. Guess who won?",
+    "emotion": "depression"
+  },
+  {
+    "joke": "Sometimes you just need to say ‘it’s okay’ to yourself… and then order pizza.",
+    "emotion": "depression"
+  },
+  {
+    "joke": "I tried yoga to relax… but fell asleep on the mat. Mission accomplished.",
+    "emotion": "anxiety"
+  }
+
+
+]

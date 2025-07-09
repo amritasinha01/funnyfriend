@@ -1,0 +1,418 @@
+body {
+
+  font-family: 'Poppins', Arial, sans-serif;
+  letter-spacing: 0.3px; /* ✅ Slight extra spacing for cleaner look */
+  background:#FFF9F0;
+  margin: 0;
+  min-height: 100vh;
+  padding-bottom: 60px;
+  padding-top: 50px; /* adjust based on header height */
+}
+.custom-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #9BABBE;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* KEY POINT */
+  z-index: 1056;
+  height: auto;
+}
+
+
+
+
+.container {
+  margin-bottom: 10px; /* spacing from bottom */
+}
+.response-box {
+  margin: 10px auto 100px auto;
+  padding: 15px 20px;
+  max-width: 600px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  font-size: 18px;
+  text-align: center;
+  color: #555;                    /* Gray text */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Shared Sidebar Base */
+.sidebar-base {
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 999;
+  font-size: 0.95rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  height: calc(100vh - 120px);
+}
+
+
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 0px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-btn {
+  background: linear-gradient(to bottom, #B38D86, #DBAD9C); /* Light blue 3D */
+  border: none;
+  color: #555; /* Gray text */
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(179, 141, 134, 1.0);
+  transition: all 0.3s ease-in-out;
+  min-width: 160px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.custom-btn:focus {
+  outline: none;
+}
+
+.custom-btn:hover {
+  transform: scale(1.08);
+}
+
+.custom-btn:active {
+  box-shadow: 0 2px #B38D86;
+  transform: scale(1.05) translateY(4px);
+}
+.section-title {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.round-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  border: none;
+  background: linear-gradient(to bottom, #DBAD9C, #4e2a1b);
+  box-shadow: 0 6px 12px rgba(78, 42, 27, 0.8);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.round-btn:hover {
+  transform: scale(1.15);
+}
+
+.round-btn:active {
+  box-shadow: 0 2px 0 #9cccd3;
+  transform: scale(1.1) translateY(4px);
+}
+
+/* Shared Button Base */
+.smart-btn {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 8px 16px rgba(120, 90, 60, 0.8);
+  color: #4a3523;
+}
+
+/* Run Button: Light Pastel Brown Gradient */
+.smart-btn-run {
+  background: linear-gradient(to bottom, #859E91, #99AC73);
+}
+
+.smart-btn-run:hover {
+  background: linear-gradient(to bottom, #f2e3d4, #cbb3a0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(120, 90, 60, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Speak Button: Slightly Darker Pastel Brown Gradient */
+.smart-btn-speak {
+  background: linear-gradient(to bottom, #d2b7a3, #b89a83);
+}
+
+.smart-btn-speak:hover {
+  background: linear-gradient(to bottom, #e0c7b4, #a78a74);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(120, 90, 60, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Active State (Same for Both) */
+.smart-btn:active {
+  transform: scale(0.95) translateY(2px);
+  box-shadow: 0 2px 0 rgba(120, 90, 60, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ Wooden Board Smart Control Card - Pastel Version */
+.smart-wood-card {
+  position: relative;
+  border: 2px solid #D9BFA9; /* Light pastel wooden edge */
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15);
+  background-color: #F5E8DC; /* Very light pastel wood color */
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      #EBDDC8 0px,
+      #EBDDC8 20px,
+      #F5E8DC 20px,
+      #F5E8DC 60px
+    ),
+    linear-gradient(to bottom, #F5E8DC, #EBDDC8);
+  background-blend-mode: multiply, normal;
+  color: #4a3523;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.smart-wood-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* ✅ 3 Horizontal Wooden Planks (Soft Pastel Gradients) */
+.wood-plank {
+  width: 100%;
+  height: 32%;
+  position: absolute;
+  left: 0;
+  border-radius: 10px;
+}
+
+.wood-plank:nth-child(1) {
+  top: 0;
+  background: linear-gradient(to right, #daeaf6, #fce1e4); /* Sky Blue → Pink */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.wood-plank:nth-child(2) {
+  top: 34%;
+  background: linear-gradient(to right, #fce1e4, #ddedea); /* Yellow → Mint Green */
+}
+
+.wood-plank:nth-child(3) {
+  top: 68%;
+  background: linear-gradient(to right, #fce1e4, #daeaf6); /* Pink → Sky Blue */
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* ✅ 4 Corner Pins */
+.smart-wood-card .pin {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #555;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+.smart-wood-card .pin.pin-tl { top: 8px; left: 8px; }
+.smart-wood-card .pin.pin-tr { top: 8px; right: 8px; }
+.smart-wood-card .pin.pin-bl { bottom: 8px; left: 8px; }
+.smart-wood-card .pin.pin-br { bottom: 8px; right: 8px; }
+
+/* ✅ Inner Content (Stays Above) */
+.smart-wood-content {
+  position: relative;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.smart-info-card {
+  background-color: rgba(196, 218, 222, 0.4);
+  /* Light transparent gray (15% opacity) */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+
+}
+
+.smart-info-card h5 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.smart-info-card p {
+  margin-bottom: 10px;
+}
+.faq-card {
+  background-color: rgba(196, 218, 222, 0.4); /* Light pastel teal with 30% transparency */
+  border-radius: 15px;
+  padding: 0px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+  margin-top: 20px;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #9BABBE;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* ✅ Text on left, dropdown on right */
+  align-items: center;
+}
+
+/* ✅ Wooden Board Smart Control Card */
+.smart-wood-cards {
+  position: relative;
+  border: 2px solid #8B5E3C; /* Wooden edge */
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+  background-color: #C49E63;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      #A4754C 0px,
+      #A4754C 20px,
+      #C49E63 20px,
+      #C49E63 60px
+    ),
+    linear-gradient(to bottom, #C49E63, #A4754C);
+  background-blend-mode: multiply, normal;
+  color: #4a3523;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.smart-wood-cards:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* ✅ 3 Horizontal Wooden Planks (Left to Right) */
+.wood-planks {
+  width: 100%;
+  height: 32%;
+  position: absolute;
+  left: 0;
+  border-radius: 10px;
+}
+
+.wood-planks:nth-child(1) {
+  top: 0;
+  background: linear-gradient(to right, #A4754C, #C49E63);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.wood-planks:nth-child(2) {
+  top: 34%;
+  background: linear-gradient(to right, #C49E63, #A4754C);
+}
+
+.wood-planks:nth-child(3) {
+  top: 68%;
+  background: linear-gradient(to right, #A4754C, #C49E63);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* ✅ 4 Corner Pins */
+.smart-wood-cards .pin {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #555;
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+.smart-wood-cards .pin.pin-tl { top: 8px; left: 8px; }
+.smart-wood-cards .pin.pin-tr { top: 8px; right: 8px; }
+.smart-wood-cards .pin.pin-bl { bottom: 8px; left: 8px; }
+.smart-wood-cards .pin.pin-br { bottom: 8px; right: 8px; }
+
+/* ✅ Inner Content (Stays Above) */
+.smart-wood-contents {
+  position: relative;
+  z-index: 10;
+  padding: 1rem;
+}
+
+/* Beautiful Dropdown with Highlighter Effect */
+.beautiful-dropdown {
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #f5f7fa, #e4ecf7);
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+}
+
+.beautiful-dropdown .dropdown-item {
+  padding: 12px 20px 12px 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.beautiful-dropdown .dropdown-item::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 70%;
+  background: transparent;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.beautiful-dropdown .dropdown-item:hover {
+  background: linear-gradient(to right, #dfe9f3, #ffffff);
+  color: #1e70bf;
+  border-radius: 8px;
+  transform: translateX(5px);
+}
+
+.beautiful-dropdown .dropdown-item:hover::before {
+  background: #1e70bf;
+  box-shadow: 0 0 8px #1e70bf;
+}
+
+
+
+
