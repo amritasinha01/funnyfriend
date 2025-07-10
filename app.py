@@ -319,11 +319,14 @@ def control_device():
 
 BACKEND_BASE_URL = 'https://funnyfriend.onrender.com'  # ✅ Replace with your deployed backend URL
 session_store = {}
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json()
     session_id = req.get('session', '')
     intent = req.get('queryResult', {}).get('intent', {}).get('displayName', '')
+
+    reply = "Sorry, I didn't understand that command."  # Default reply
 
     if intent == 'Detect Emotion and Tell Joke':
         user_text = req.get('queryResult', {}).get('queryText', '')
@@ -341,18 +344,13 @@ def webhook():
         headlines = [a['title'] for a in resp['articles'][:5]]
         reply = "Here are the top news headlines: " + "; ".join(headlines)
 
-
     elif intent == 'Ask Funny Friend':
         user_text = req.get('queryResult', {}).get('queryText', '')
-        # ✅ Retrieve previous chat history
         chat_history = session_store.get(session_id, [])
         chat_history.append({"role": "user", "content": user_text})
-        # ✅ Send full chat history to backend
         resp = requests.post(f'{BACKEND_BASE_URL}/llm_chat', json={'messages': chat_history}).json()
         reply = resp['reply']
-        # ✅ Save assistant reply into chat history
         chat_history.append({"role": "assistant", "content": reply})
-        # ✅ Update session store
         session_store[session_id] = chat_history
 
     elif intent == 'Smart Device Control':
@@ -369,18 +367,12 @@ def webhook():
     elif intent == 'Suggest Places by Emotion':
         reply = "To find places based on your emotion, open the app, enter your mood, and select a category for nearby places."
 
-    else:
-        reply = "Sorry, I didn't understand that command."
-
     return jsonify({
         "fulfillmentText": reply,
         "source": "funny-friend-webhook"
     })
 
 
-
-
 # ---------------------- Run App ----------------------
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
-
