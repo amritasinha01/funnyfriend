@@ -44,6 +44,12 @@ model, vectorizer = joblib.load('emotion_model.pkl')
 # Load local jokes with associated emotions
 with open('jokes.json', 'r', encoding='utf-8') as f:
     jokes = json.load(f)
+def predict_emotion_and_joke(text):
+    X = vectorizer.transform([text])
+    emotion = model.predict(X)[0] if text else 'neutral'
+    matched = [j for j in jokes if j.get('emotion') == emotion]
+    joke = random.choice(matched if matched else jokes)
+    return {'emotion': emotion, 'joke': joke['joke'], 'suggest_doctor': emotion in ['anxiety', 'depression']}
 
 # ---------------------- Routes ----------------------
 
@@ -317,7 +323,6 @@ def control_device():
 #webhook for google assistent___________________________________________________________________________________________
 #-----------------------------------------------------------------------------------------------------------------------
 
-BACKEND_BASE_URL = 'https://funnyfriend.onrender.com'  # ✅ Replace with your deployed backend URL
 session_store = {}
 
 @app.route('/webhook', methods=['POST'])
@@ -325,37 +330,37 @@ def webhook():
     req = request.get_json()
     session_id = req.get('session', '')
     intent = req.get('queryResult', {}).get('intent', {}).get('displayName', '')
-
-    reply = "Sorry, I didn't understand that command."  # Default reply
+    reply = "Sorry, I didn't understand that command."
 
     if intent == 'Detect Emotion and Tell Joke':
         user_text = req.get('queryResult', {}).get('queryText', '')
-        resp = requests.post(f'{BACKEND_BASE_URL}/talk', json={'text': user_text}).json()
+        resp = predict_emotion_and_joke(user_text)
         reply = f"Oh, {resp['emotion']} vibes detected! Here's a joke: {resp['joke']}"
-        if resp.get('suggest_doctor'):
+        if resp['suggest_doctor']:
             reply += " You seem overwhelmed. Visit the doctors page on the app."
 
     elif intent == 'Live Joke':
-        resp = requests.get(f'{BACKEND_BASE_URL}/live_joke').json()
-        reply = f"Here’s a fresh joke for you: {resp['joke']}"
+        joke = live_joke().json['joke']
+        reply = f"Here’s a fresh joke for you: {joke}"
 
     elif intent == 'Live News':
-        resp = requests.get(f'{BACKEND_BASE_URL}/live_news').json()
-        headlines = [a['title'] for a in resp['articles'][:5]]
+        headlines = [a['title'] for a in live_news().json['articles'][:5]]
         reply = "Here are the top news headlines: " + "; ".join(headlines)
 
     elif intent == 'Ask Funny Friend':
         user_text = req.get('queryResult', {}).get('queryText', '')
         chat_history = session_store.get(session_id, [])
         chat_history.append({"role": "user", "content": user_text})
-        resp = requests.post(f'{BACKEND_BASE_URL}/llm_chat', json={'messages': chat_history}).json()
+        with app.test_request_context(json={'messages': chat_history}):
+            resp = json.loads(llm_chat().get_data(as_text=True))
         reply = resp['reply']
         chat_history.append({"role": "assistant", "content": reply})
         session_store[session_id] = chat_history
 
     elif intent == 'Smart Device Control':
         user_text = req.get('queryResult', {}).get('queryText', '')
-        resp = requests.post(f'{BACKEND_BASE_URL}/device_control', json={'text': user_text}).json()
+        with app.test_request_context(json={'text': user_text}):
+            resp = json.loads(device_control().get_data(as_text=True))
         if resp['success']:
             reply = f"{resp['device'].capitalize()} has been turned {resp['action']}"
         else:
@@ -367,12 +372,8 @@ def webhook():
     elif intent == 'Suggest Places by Emotion':
         reply = "To find places based on your emotion, open the app, enter your mood, and select a category for nearby places."
 
-    return jsonify({
-        "fulfillmentText": reply,
-        "source": "funny-friend-webhook"
-    })
+    return jsonify({"fulfillmentText": reply, "source": "funny-friend-webhook"})
 
-
-# ---------------------- Run App ----------------------
+# ------------------- Run App -------------------
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

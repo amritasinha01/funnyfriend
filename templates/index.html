@@ -41,8 +41,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="display: block; margin: 0 auto;"></button>
   </div>
   <div class="offcanvas-body">
-
-    <!-- ✅ Smart Control -->
+ <div class="smart-info-card"><h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">Prototype Demo: Smart Home Voice & Device Integration (Ready for Real IoT Devices)</h5></div>
+      <!--  Smart Control -->
     <div class="card smart-wood-card mb-4">
       <!-- Wooden Planks -->
       <div class="wood-plank"></div>
@@ -73,32 +73,33 @@
 
     <!-- ✅ About Smart Control -->
     <div class="smart-info-card">
-      <h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">About Smart Control</h5>
-      <p>
-        Smart Control lets you interact with simulated devices using voice or text — like
-        <em>"turn on/off the fan"</em> <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
-      </p>
-      <p>
-        It’s a fun, browser-based smart home simulation — great for testing, learning, or just playing around.
-      </p>
-      <p>
-        <strong>Tech Tip:</strong> This setup can be extended to real IoT devices via HTTP or MQTT (e.g., with ESP32).
-      </p>
-    </div>
+   <h5 class="section-title text-center mt-3 mb-3">About Smart Control</h5>
+  <p>
+   The Smart Control panel is designed for both simulation and real IoT integration. With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
+</p><p>
+  Smart Control lets you interact with simulated devices using voice or text — like <em>"turn on/off the fan"</em> or <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
+</p>
+  <p>
+    It’s a fun, browser-based smart home simulation — great for testing, learning, or just playing around.
+  </p>
+  <p>
+    <strong>Tech Tip:</strong> This setup can be extended to real IoT devices via HTTP or MQTT (e.g., with ESP32).
+  </p>
+</div>
 
 
-    <!-- ✅ FAQ Section -->
-    <div class="faq-card">
-      <h6 class="font-weight-bold">❓ FAQ</h6>
-      <ul class="pl-3" style="list-style-type: disc; font-size: 0.85rem; color: #444;">
-        <li><strong>What can I say?</strong> Try commands like <em>"turn on the light"</em>.</li>
-        <li><strong>Joke not working?</strong> Check your mic permission or refresh.</li>
-        <li><strong>Chat seems slow?</strong> Cloud LLM may take a second or two.</li>
-        <li><strong>Can "smart control" control real devices?</strong> Yes! The Smart Control panel is designed for both simulation and real IoT integration.
-          With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
-        </li>
-      </ul>
-    </div>
+ <!-- FAQ Section -->
+<div class="faq-card">
+  <h6 class="font-weight-bold">❓ FAQ</h6>
+  <ul class="pl-3" style="list-style-type: disc; font-size: 0.85rem; color: #444;">
+    <li><strong>What can I say?</strong> Try commands like <em>"turn on the light"</em>.</li>
+    <li><strong>Joke not working?</strong> Check your mic permission or refresh.</li>
+    <li><strong>Chat seems slow?</strong> Cloud LLM may take a second or two.</li>
+    <li><strong>Can "Smart Control" control real devices?</strong> Yes! It’s designed for both simulation and real IoT integration.</li>
+    <li><strong>How does "Smart Control" connect with Google Assistant?</strong> It uses the same backend via Dialogflow webhook for voice assistant control.</li>
+  </ul>
+</div>
+
 
   </div>
 </div>
@@ -109,7 +110,7 @@
     <!-- Sidebar (Desktop Only) --------------------------------------------------------------------------------------------------------------------------------------------------------->
     <nav class="col-md-4 d-none d-md-block sidebar-base sidebar-brick-wall" style="position: fixed; top: 60px; left: 0; width: 400px; height: calc(100vh - 90px);">
   <!-- ✅ Same Sidebar Content as Mobile -->
-
+   <div class="smart-info-card"><h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">Prototype Demo: Smart Home Voice & Device Integration (Ready for Real IoT Devices)</h5></div>
       <!--  Smart Control -->
   <div class="card smart-wood-card mb-4">
   <!-- Wooden Planks -->
@@ -140,11 +141,12 @@
 
 
       <div class="smart-info-card">
-  <h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">About Smart Control</h5>
+   <h5 class="section-title text-center mt-3 mb-3">About Smart Control</h5>
   <p>
-    Smart Control lets you interact with simulated devices using voice or text — like
-    <em>"turn on/off the fan"</em> <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
-  </p>
+   The Smart Control panel is designed for both simulation and real IoT integration. With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
+</p><p>
+  Smart Control lets you interact with simulated devices using voice or text — like <em>"turn on/off the fan"</em> or <em>"turn on/off the light"</em>. Yaymoji responds with real-time animations.
+</p>
   <p>
     It’s a fun, browser-based smart home simulation — great for testing, learning, or just playing around.
   </p>
@@ -154,16 +156,15 @@
 </div>
 
 
-  <!--  FAQ Section -->
-      <div class="faq-card">
+ <!-- FAQ Section -->
+<div class="faq-card">
   <h6 class="font-weight-bold">❓ FAQ</h6>
   <ul class="pl-3" style="list-style-type: disc; font-size: 0.85rem; color: #444;">
     <li><strong>What can I say?</strong> Try commands like <em>"turn on the light"</em>.</li>
     <li><strong>Joke not working?</strong> Check your mic permission or refresh.</li>
     <li><strong>Chat seems slow?</strong> Cloud LLM may take a second or two.</li>
-    <li><strong>Can "smart control" control real devices?</strong> Yes! The Smart Control panel is designed for both simulation and real IoT integration.
-      With minor changes, it can send commands to physical devices like ESP32 over your Wi-Fi.
-    </li>
+    <li><strong>Can "Smart Control" control real devices?</strong> Yes! It’s designed for both simulation and real IoT integration.</li>
+    <li><strong>How does "Smart Control" connect with Google Assistant?</strong> It uses the same backend via Dialogflow webhook for voice assistant control.</li>
   </ul>
 </div>
 
@@ -200,7 +201,7 @@
     <div class="smart-info-card p-5">
       <!-- Card Content -->
       <div>
-        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 10px;">Local AI Jokes</h5>
+        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 5px;">Local AI Jokes</h5>
         <p style="color: #3A5A40; font-size: 0.9rem;font-weight: bold;text-align: center;margin-bottom: 10px;">Custom AI trained for emotion-based jokes</p>
         <div class="d-flex justify-content-center">
           <button onclick="sendToBackend()" class="round-btn">⌨️</button>
@@ -215,7 +216,7 @@
     <div class="smart-info-card p-5">
       <!-- Card Content -->
       <div>
-        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 10px;">🤖 Ask Funny Friend</h5>
+        <h5 style="color: ##2f1b0c;font-weight: bold;text-align: center;margin-bottom: 5px;">🤖 Ask Funny Friend</h5>
         <p style="color: #3A5A40; font-size: 0.9rem;font-weight: bold;text-align: center;margin-bottom: 10px;">Fun talks powered by Cloud LLM</p>
         <div class="d-flex justify-content-center">
           <button onclick="askLLMText()" class="round-btn">⌨️</button>
@@ -226,7 +227,7 @@
   </div>
 </div>
 
-<div class="row g-4 justify-content-center mt-3">
+<div class="row g-4 justify-content-center mt-1">
   <button class="custom-btn d-flex align-items-center justify-content-center"
     style="padding: 12px 20px; border-radius: 15px; min-width: auto; max-width: 240px;"
     onmousedown="this.style.transform='translateY(4px)'"
