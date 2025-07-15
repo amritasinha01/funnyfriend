@@ -224,17 +224,34 @@ def device_control():
     text = data.get("text", "").lower()
 
     device = action = None
+
     if "fan" in text:
         device = "fan"
         action = "on" if "on" in text or "start" in text else "off"
     elif "light" in text or "bulb" in text:
         device = "light"
         action = "on" if "on" in text or "start" in text else "off"
+    elif any(word in text for word in ["ac", "a c", "air conditioner"]):
+        device = "ac"
+        action = "on" if "on" in text or "start" in text else "off"
+    elif "tv" in text or "television" in text:
+        device = "tv"
+        action = "on" if "on" in text or "start" in text else "off"
+    elif "music" in text or "music system" in text or "speaker" in text:
+        device = "music"
+        action = "on" if "on" in text or "start" in text or "play" in text else "off"
+    elif "party" in text or "party mode" in text:
+        device = "party"
+        action = "on" if "on" in text or "start" in text or "activate" in text else "off"
+    elif "curtain" in text:
+        device = "curtain"
+        action = "open" if "open" in text or "start" in text else "close"
 
     if device and action:
         return jsonify(success=True, device=device, action=action)
     else:
         return jsonify(success=False, message="No recognizable smart command")
+
 
 #google map---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -347,15 +364,60 @@ def webhook():
         headlines = [a['title'] for a in live_news().json['articles'][:5]]
         reply = "Here are the top news headlines: " + "; ".join(headlines)
 
+
     elif intent == 'Ask Funny Friend':
+
         user_text = req.get('queryResult', {}).get('queryText', '')
-        chat_history = session_store.get(session_id, [])
+
+        # Retrieve previous chat history from context
+
+        contexts = req.get('queryResult', {}).get('outputContexts', [])
+
+        chat_history = []
+
+        for ctx in contexts:
+
+            if 'chat_history' in ctx['name']:
+                chat_history = ctx.get('parameters', {}).get('history', [])
+
         chat_history.append({"role": "user", "content": user_text})
+
         with app.test_request_context(json={'messages': chat_history}):
+
             resp = json.loads(llm_chat().get_data(as_text=True))
+
         reply = resp['reply']
+
         chat_history.append({"role": "assistant", "content": reply})
-        session_store[session_id] = chat_history
+
+        output_contexts = [
+
+            {
+
+                "name": f"{session_id}/contexts/chat_history",
+
+                "lifespanCount": 20,
+
+                "parameters": {
+
+                    "history": chat_history
+
+                }
+
+            }
+
+        ]
+
+        return jsonify({
+
+            "fulfillmentText": reply,
+
+            "source": "funny-friend-webhook",
+
+            "outputContexts": output_contexts
+
+        })
+
 
     elif intent == 'Smart Device Control':
         user_text = req.get('queryResult', {}).get('queryText', '')

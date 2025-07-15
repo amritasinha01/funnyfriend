@@ -335,6 +335,74 @@ body {
   box-shadow: 0 0 8px #1e70bf;
 }
 
+.device-graphics-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+@media screen and (max-width: 1024px) {
+  .sidebar-base {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border-right: none;
+    box-shadow: none;
+    height: auto;
+    padding: 15px;
+    margin-bottom: 20px;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  .custom-header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .response-box,
+  .button-grid,
+  .smart-wood-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body {
+    padding-left: 0 !important;
+    overflow-x: hidden;
+  }
+
+  .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  main.col-md-8.offset-md-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  nav.sidebar-base {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: auto !important;
+    height: auto !important;
+    margin-bottom: 20px;
+    box-shadow: none !important;
+  }
+
+  .device-graphics-bg {
+     /* Optional: to avoid overlap on small screens */
+  }
+}
+
+
 
 
 

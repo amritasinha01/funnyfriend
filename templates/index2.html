@@ -19,7 +19,7 @@
     <h2 class="mb-0"> 🤖</h2>
   </div>
   <!-- Hamburger stays at right automatically -->
-  <button class="btn d-md-none ms-auto text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#smartSidebarOffcanvas" aria-controls="smartSidebarOffcanvas"
+  <button class="btn d-xl-none ms-auto text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#smartSidebarOffcanvas" aria-controls="smartSidebarOffcanvas"
     style="
       background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -53,21 +53,16 @@
       <div class="pin pin-bl"></div>
       <div class="pin pin-br"></div>
 
-      <!-- ✅ Smart Control Content -->
-      <div class="smart-wood-content">
-        <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 10px;">Smart Control</h5>
-        <input type="text" id="smartCommandMobile" class="form-control mb-2" placeholder="e.g. turn on the fan" />
-        <div class="d-flex justify-content-between">
-          <button onclick="handleSmartCommand()" class="smart-btn smart-btn-run"> ▶️ Run </button>
-          <button onclick="speakSmartCommand()" class="smart-btn smart-btn-speak">🎤 Speak</button>
-        </div>
-        <div class="text-center mt-3" style="font-size: 40px;">
-          <div id="fanIconMobile" style="display: inline-block; font-size: 48px;">🌀</div>
-          <div id="lightIconMobile" style="display: inline-block; font-size: 48px; color: #666666; margin-left: 20px;">💡</div>
-        </div>
-      </div>
+       <!-- ✅ Smart Control Content (Now Visible) -->
+  <div class="smart-wood-content">
+    <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 20px;">Smart Control</h5>
+    <input type="text" id="smartCommandMobile" class="form-control mb-5 mt-5" placeholder="e.g. turn on the fan" />
+    <div class="d-flex justify-content-between">
+      <button onclick="handleSmartCommand()" class="smart-btn smart-btn-run">▶️ Run</button>
+      <button onclick="speakSmartCommand()" class="smart-btn smart-btn-speak">🎤 Speak</button>
     </div>
-
+  </div>
+</div>
 
     <!-- ✅ About Smart Control -->
     <div class="smart-info-card">
@@ -106,7 +101,7 @@
 <div class="container-fluid" style="padding-top: 100px;">
   <div class="row">
     <!-- Sidebar (Desktop Only) --------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <nav class="col-md-4 d-none d-md-block sidebar-base sidebar-brick-wall" style="position: fixed; top: 60px; left: 0; width: 400px; height: calc(100vh - 90px);">
+    <nav class="col-xl-4 d-none d-xl-block sidebar-base sidebar-brick-wall" style="position: fixed; top: 60px; left: 0; width: 400px; height: calc(100vh - 90px);">
   <!-- ✅ Same Sidebar Content as Mobile -->
   <div class="smart-info-card"><h5 style="font-weight: 900; font-size: 1.2rem; background: linear-gradient(90deg, #4a90e2, #4285F4, #1e70bf, #0052cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 6px rgba(0, 0, 80, 0.4);">Prototype Demo: Smart Home Voice & Device Integration (Ready for Real IoT Devices)</h5></div>
       <!--  Smart Control -->
@@ -122,17 +117,13 @@
   <div class="pin pin-bl"></div>
   <div class="pin pin-br"></div>
 
-  <!-- ✅ Smart Control Content (Now Visible) -->
+   <!-- ✅ Smart Control Content (Now Visible) -->
   <div class="smart-wood-content">
-    <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 10px;">Smart Control</h5>
-    <input type="text" id="smartCommandDesktop" class="form-control mb-2" placeholder="e.g. turn on the fan" />
+    <h5 style="color: #4a3523;font-weight: bold;text-align: center;margin-bottom: 20px;">Smart Control</h5>
+    <input type="text" id="smartCommandDesktop" class="form-control mb-5 mt-5" placeholder="e.g. turn on the fan" />
     <div class="d-flex justify-content-between">
       <button onclick="handleSmartCommand()" class="smart-btn smart-btn-run">▶️ Run</button>
       <button onclick="speakSmartCommand()" class="smart-btn smart-btn-speak">🎤 Speak</button>
-    </div>
-    <div class="text-center mt-3" style="font-size: 40px;">
-      <div id="fanIconDesktop" style="display: inline-block; font-size: 48px;">🌀</div>
-      <div id="lightIconDesktop" style="display: inline-block; font-size: 48px; color: #666666; margin-left: 20px;">💡</div>
     </div>
   </div>
 </div>
@@ -168,7 +159,30 @@
     </nav>
 
  <!--  Main Content Area -------------------------------------------------------------------------------------------------------------------------------------------------------->
-<main class="col-md-8 offset-md-3">
+<main class="col-md-8 offset-md-3 main-content-area">
+  <!-- ✅ Background Graphics for Devices (Fixed Behind Content) -->
+<div class="device-graphics-bg">
+  <div id="fanSpin">✇</div>
+
+<img src="/static/images/light3.png" alt="Lamp" class="lamp-image" id="lampImage">
+<div id="lampGlow" class="lamp-glow"></div>
+<!-- ❄️ AC Floating Animation Group (Generated via JS) -->
+<div class="device-float-group" id="acGroup"></div>
+
+<div id="netflixLogo">NETFLIX</div>
+
+<div id="verticalCurtain"></div>
+<div id="musicNotesGroup"></div>
+
+
+
+<!-- 🎉 4 Party Bulbs (Evenly Spread Across Background) -->
+<div class="corner-glow top-left"></div>
+<div class="corner-glow top-right"></div>
+<div class="corner-glow bottom-left"></div>
+<div class="corner-glow bottom-right"></div>
+
+</div>
   <div class="container">
     <!--  Main Content Starts Here ---------------------------------------------------------------------------------------------------------------------------------------------------->
     <h1 class="text-center">
@@ -277,20 +291,228 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- JS (via Flask) -->
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-
-<!-- Fan Animation CSS  -->
 <style>
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* ✅ Fan Spin Animation */
+#fanSpin {
+  position: fixed;
+  top: -400px;  /* hidden above initially */
+  left: 50%;
+  transform: translateX(-15%);
+  font-size: 300px;
+  color: #1967D6; /* pastel blue */
+  opacity: 0.15;
+  transition: top 0.8s ease, opacity 0.5s ease;
+  z-index: 9999;
+  pointer-events: none;
 }
 
-.spinning {
-  animation: spin 1s linear infinite;
+#fanSpin.spinning {
+  animation: fanRotate 2s linear infinite;
+  top: 350px;     /* slide to center vertically */
+  opacity: 0.4;
 }
+
+@keyframes fanRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* ✅ Wrapper to control position Lamp */
+.lamp-image {
+  position: fixed;
+  top: -400px; /* hidden above */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: auto;
+  z-index: 9999;
+  opacity: 0;
+  transition: top 0.6s ease, opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.lamp-image.on {
+  top: 40px;     /* drops down from top */
+  opacity: 1;
+}
+.lamp-glow {
+  position: fixed;
+  top: 140px; /* Just below the lamp */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 400px;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 200, 0.3), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 9998;
+  pointer-events: none;
+  filter: blur(8px);
+}
+.lamp-glow.on {
+  opacity: 1;
+}
+
+
+
+/* ✅ AC Animation */
+.device-float-group {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+.device-float {
+  position: absolute;
+  font-size: 90px;
+  opacity: 0;
+  display: none;
+  animation: slideDownUp 4s ease-in-out infinite;
+  user-select: none;
+color: rgba(200, 245, 255, 0.4);
+text-shadow: 0 0 25px rgba(180, 235, 255, 0.9);
+
+}
+.device-float.on {
+  display: inline-block;
+}
+@keyframes slideDownUp {
+  0% { transform: translateY(-100px); opacity: 0; }
+  20% { transform: translateY(0px); opacity: 1; }
+  80% { transform: translateY(80vh); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+/* ✅ tv Animation */
+/* ✅ Netflix Logo Animation (Glitch-Free) */
+#netflixLogo {
+  display: none;  /* Prevent flash on load */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  font-size: 10vw;
+  color: #e50914;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 0 0 15px #e50914a6;
+  opacity: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#netflixLogo.visible {
+  display: block; /* Show when active */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+
+/* curtain (Blue Light) */
+#verticalCurtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
+  overflow: hidden;
+}
+
+.slats {
+  position: absolute;
+  width: 100%;
+  height: 5vh;
+  background: linear-gradient(to bottom, #deb887, #d2a679);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(139, 69, 19, 0.2) 0px,
+    rgba(139, 69, 19, 0.2) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  border-bottom: 1px solid #8b5a2b;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+
+.slats.open {
+  transform: scaleY(1);
+}
+
+
+
+
+/* ✅ Music Animation: Pulse Effect */
+.music-note {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 30px;
+  opacity: 0.15;
+  animation: floatNote 6s linear forwards;
+  color: #87CEFA;
+  text-shadow: 0 0 10px rgba(135, 206, 250, 0.4);
+  user-select: none;
+
+  --x: 0px;
+  --y: 100vh; /* fallback */
+}
+
+@keyframes floatNote {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(var(--x), calc(-1 * var(--y))) scale(1.3);
+    opacity: 0;
+  }
+}
+
+
+
+/* ✅ Party Bulb Basic Style (Fixed Position, No Animation By Default) */
+.corner-glow {
+  position: fixed;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(135, 206, 250, 0.2), transparent 80%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: cornerGlowCycle 3s ease-in-out infinite;
+  display: none;
+}
+
+@keyframes cornerGlowCycle {
+  0%   { opacity: 1; background: radial-gradient(circle, rgba(255, 105, 180, 0.35), transparent 80%); } /* Pink */
+  25%  { opacity: 1; background: radial-gradient(circle, rgba(135, 206, 250, 0.4), transparent 80%); }  /* Sky Blue */
+  50%  { opacity: 1; background: radial-gradient(circle, rgba(255, 215, 0, 0.35), transparent 80%); }   /* Yellow */
+  75%  { opacity: 1; background: radial-gradient(circle, rgba(144, 238, 144, 0.35), transparent 80%); } /* Light Green */
+  100% { opacity: 1; background: radial-gradient(circle, rgba(255, 105, 180, 0.35), transparent 80%); } /* Pink again */
+}
+
+
+.top-left { top: 0; left: 0; }
+.top-right { top: 0; right: 0; }
+.bottom-left { bottom: 0; left: 0; }
+.bottom-right { bottom: 0; right: 0; }
 
 
 </style>
+
 
 </body>
 </html>

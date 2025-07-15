@@ -322,22 +322,36 @@ function sendLLMRequest(text) {
 }
 
 //light bulb control----------------------------------------------------------------------------------------------------
-// ✅ Open Smart Control Box (For Any Additional Toggles, Optional)
-function openSmartControl() {
-  const box = document.getElementById("smartControlBox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
-// ✅ Handle Smart Command (Detect Mobile/Desktop Inputs)
 function handleSmartCommand() {
   const desktopInput = document.getElementById("smartCommandDesktop");
   const mobileInput = document.getElementById("smartCommandMobile");
 
-  const text = desktopInput?.value || mobileInput?.value;
-  runSmartCommand(text.trim().toLowerCase());
+  let text = "";
+
+  // Detect screen width to decide which input to use
+  if (window.innerWidth > 1024 && desktopInput) {
+    text = desktopInput.value;
+  } else if (mobileInput) {
+    text = mobileInput.value;
+  }
+
+  if (text.trim()) {
+    runSmartCommand(text.trim().toLowerCase());
+
+    // Optional: clear input after send
+    if (window.innerWidth > 1024 && desktopInput) {
+      desktopInput.value = "";
+    } else if (mobileInput) {
+      mobileInput.value = "";
+    }
+  } else {
+    alert("Please enter a command.");
+  }
 }
 
-// ✅ Send Command to Backend + Animate Devices
+
+
+// ✅ Send Command to Backend + Animate Devices (Fan, Light, AC, TV, Music, Party, Curtain)
 function runSmartCommand(text) {
   const box = document.getElementById("responseBox");
 
@@ -346,65 +360,242 @@ function runSmartCommand(text) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: text })
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      const { device, action } = data;
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        const { device, action } = data;
 
-      if (device === "fan") {
-        animateFan(action === "on");
-        box.innerHTML += `<p>🌀 Fan turned ${action.toUpperCase()}</p>`;
-        speak(`Fan is now ${action}`);
-      } else if (device === "light") {
-        toggleLight(action === "on");
-        box.innerHTML += `<p>💡 Light turned ${action.toUpperCase()}</p>`;
-        speak(`Light is now ${action}`);
+        if (device === "fan") {
+          animateFan(action === "on");
+          box.innerHTML += `<p>🌀 Fan turned ${action.toUpperCase()}</p>`;
+          speak(`Fan is now ${action}`);
+        } else if (device === "light") {
+          toggleLamp(action === "on");
+          box.innerHTML += `<p>💡 Light turned ${action.toUpperCase()}</p>`;
+          speak(`Light is now ${action}`);
+        } else if (device === "ac") {
+          animateAC(action === "on");
+          box.innerHTML += `<p>❄️ AC turned ${action.toUpperCase()}</p>`;
+          speak(`AC is now ${action}`);
+        } else if (device === "tv") {
+          toggleNetflixLogo(action === "on");  // ✅ Controls logo state
+          box.innerHTML += `<p>📺 TV turned ${action.toUpperCase()}</p>`;
+          speak(`TV is now ${action}`);
+        } else if (device === "curtain") {
+          animateVerticalCurtain(action === "open");
+          box.innerHTML += `<p>🪟 Curtain ${action.toUpperCase()}</p>`;
+          speak(`Curtain is now ${action}`);
+        }
+
+          else if (device === "music") {
+          animateMusic(action === "on");
+          box.innerHTML += `<p>🎵 Music System ${action.toUpperCase()}</p>`;
+          speak(`Music system is now ${action}`);
+        }
+          else if (device === "party") {
+          togglePartyMode(action === "on");
+          box.innerHTML += `<p>🎉 Party Mode ${action.toUpperCase()}</p>`;
+          speak(`Party mode is now ${action}`);
+        }
+
+
+      } else {
+        speak("Sorry, I didn't understand.");
+        box.innerHTML += `<p>⚠️ Unknown smart command: "${text}"</p>`;
       }
-    } else {
-      speak("Sorry, I didn't understand.");
-      box.innerHTML += `<p>⚠️ Unknown smart command: "${text}"</p>`;
-    }
 
-    box.scrollTop = box.scrollHeight;
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    speak("Failed to send smart command.");
-  });
+      box.scrollTop = box.scrollHeight;
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      speak("Failed to send smart command.");
+    });
 }
 
-// ✅ Fan Animation (Both Desktop & Mobile Icons)
+// ✅ Fan Animation
 function animateFan(on) {
-  const fanIcons = [
-    document.getElementById("fanIconMobile"),
-    document.getElementById("fanIconDesktop")
-  ];
-  fanIcons.forEach(icon => {
-    if (icon) icon.classList.toggle("spinning", on);
-  });
-}
-
-// ✅ Light Toggle (Both Desktop & Mobile Icons)
-function toggleLight(on) {
-  const lightIcons = [
-    document.getElementById("lightIconMobile"),
-    document.getElementById("lightIconDesktop")
-  ];
-  lightIcons.forEach(icon => {
-    if (icon) {
-      icon.style.color = on ? "#00cc00" : "#666666";
-      icon.style.textShadow = on ? "0 0 10px #00cc00" : "none";
+  const fan = document.getElementById("fanSpin");
+  if (fan) {
+    if (on) {
+      fan.classList.add("spinning");
+    } else {
+      fan.classList.remove("spinning");
     }
+  }
+}
+
+// ✅ Light Glow
+function toggleLamp(on) {
+  const lamp = document.getElementById("lampImage");
+  const glow = document.getElementById("lampGlow");
+
+  if (lamp && glow) {
+    if (on) {
+      lamp.classList.add("on");
+      glow.classList.add("on");
+    } else {
+      lamp.classList.remove("on");
+      glow.classList.remove("on");
+    }
+  }
+}
+
+
+
+// ✅ AC Animation
+// Add 15 ACs in a pattern
+const acGroup = document.getElementById("acGroup");
+const rows = 5;
+const cols = 6;
+const gapX = 500;
+const gapY = 300;
+const startX = -1200;
+const startY = -500;
+
+for (let row = 0; row < rows; row++) {
+  for (let col = 0; col < cols; col++) {
+    const acIcon = document.createElement("div");
+    acIcon.className = "device-float ac";
+    acIcon.textContent = "❄️";
+
+    const offsetX = row % 2 === 0 ? 0 : gapX / 2;
+    acIcon.style.left = `${startX + col * gapX + offsetX}px`;
+    acIcon.style.top = `${startY + row * gapY}px`;
+
+    // ✅ Add random animation delay for natural continuous fall
+    const delay = Math.random() * 3 + 0.5;
+    acIcon.style.animationDelay = `${delay}s`;
+
+    acGroup.appendChild(acIcon);
+  }
+}
+
+
+
+function animateAC(on) {
+  const group = document.getElementById("acGroup");
+  const acIcons = group.querySelectorAll(".device-float");
+  acIcons.forEach(icon => icon.classList.toggle("on", on));
+}
+
+// ✅ TV Animation Control Function (Glitch-Free)
+function toggleNetflixLogo(on) {
+  const logo = document.getElementById("netflixLogo");
+  if (!logo) return;
+
+  if (on) {
+    logo.style.display = "block"; // Force visible
+    setTimeout(() => logo.classList.add("visible"), 10); // Smooth show
+  } else {
+    logo.classList.remove("visible");
+    setTimeout(() => logo.style.display = "none", 500); // Hide after fade-out
+  }
+}
+
+
+
+// ✅ Curtain Animation Control
+// 🔁 Generate slats once when page loads
+window.addEventListener("DOMContentLoaded", () => {
+  const curtain = document.getElementById("verticalCurtain");
+  const totalSlats = 20;
+
+  for (let i = 0; i < totalSlats; i++) {
+    const slat = document.createElement("div");
+    slat.className = "slats";
+    slat.style.top = `${i * (100 / totalSlats)}vh`;
+    slat.style.height = `${100 / totalSlats}vh`;
+    curtain.appendChild(slat);
+  }
+});
+function animateVerticalCurtain(open) {
+  const wrapper = document.getElementById("verticalCurtain");
+  const slats = wrapper.querySelectorAll(".slats");
+
+  if (open) {
+    wrapper.style.display = "block";
+    slats.forEach((slat, i) => {
+      setTimeout(() => {
+        slat.classList.add("open");
+      }, i * 100); // Drop one by one
+    });
+  } else {
+    slats.forEach((slat, i) => {
+      setTimeout(() => {
+        slat.classList.remove("open");
+      }, i * 50);
+    });
+    setTimeout(() => {
+      wrapper.style.display = "none";
+    }, slats.length * 60);
+  }
+}
+
+
+
+let musicInterval;  // 🔁 Define at top
+
+function startMusicNotes() {
+  const group = document.getElementById("musicNotesGroup");
+
+  // ✅ Clear previous interval if any
+  clearInterval(musicInterval);
+
+  musicInterval = setInterval(() => {
+    const note = document.createElement("div");
+    note.className = "music-note";
+    note.textContent = Math.random() > 0.5 ? "🎶" : "🎵";
+
+// ✅ Set fixed X and Y position (you can randomize if needed)
+    const posX = 800; // X from left
+    const posY = -500;  // Y from bottom
+    note.style.right = "0px";
+    note.style.bottom = "0px";
+
+// ✅ Set drift (diagonal direction)
+    const driftX = Math.floor(Math.random() * -2000 + 100); // -100 to +100 px
+    const driftY = 100 + Math.random() * 1000; // how high it floats
+    note.style.setProperty('--x', `${driftX}px`);
+    note.style.setProperty('--y', `${driftY}px`);
+
+// ✅ Random size and duration
+    note.style.fontSize = `${Math.random() * 90 + 20}px`;
+    note.style.animationDuration = `${5 + Math.random() * 2}s`;
+
+    group.appendChild(note);
+
+    setTimeout(() => note.remove(), 8000);
+  }, 300);
+}
+
+function animateMusic(on) {
+  const group = document.getElementById("musicNotesGroup");
+  if (on) {
+    group.style.display = "block";
+    startMusicNotes();  // Starts once, safely
+  } else {
+    clearInterval(musicInterval);  // ✅ Stop spamming notes
+    group.innerHTML = "";
+    group.style.display = "none";
+  }
+}
+
+
+// ✅ Party Animation
+function togglePartyMode(on) {
+  document.querySelectorAll('.corner-glow').forEach(glow => {
+    glow.style.display = on ? 'block' : 'none';
   });
 }
 
-// ✅ Speak Function (Simple Text-to-Speech)
+
+// ✅ Speak Function
 function speak(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   speechSynthesis.speak(utterance);
 }
 
-// ✅ Mic Command with Real Speech Recognition (Web Speech API)
+// ✅ Mic Command with Speech Recognition
 function speakSmartCommand() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = 'en-US';
@@ -424,6 +615,7 @@ function speakSmartCommand() {
 
   recognition.start();
 }
+
 
 //find place by emotion google map--------------------------------------------------------------------------------------
 let allPlaces = [];
