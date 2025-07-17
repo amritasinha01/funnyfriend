@@ -36,6 +36,9 @@ def doctors_page():
 @app.route('/places_map')
 def places_map_page():
     return render_template('places_map.html')
+@app.route("/commands")
+def command_help():
+    return render_template("commands.html")
 
 
 # Load trained emotion model and vectorizer
@@ -216,8 +219,7 @@ def llm_chat():
         reply += " By the way, you can also search for nearby doctors using Google Maps if you need support."
 
     return jsonify(reply=reply)
-
-# 💡 Fan/Light smart command API
+# 💡 Smart Command API with Fan Speed, AC Temp, Volume & Mode Controls----------------------------------------------------------------------
 @app.route('/device_control', methods=['POST'])
 def device_control():
     data = request.get_json()
@@ -225,33 +227,74 @@ def device_control():
 
     device = action = None
 
+    # ------------------- FAN ----------------------
     if "fan" in text:
         device = "fan"
-        action = "on" if "on" in text or "start" in text else "off"
+        if "speed" in text:
+            match = re.search(r'\b([1-5])\b', text)
+            speed = match.group(1) if match else "default"
+            return jsonify(success=True, device=device, action="set_speed", speed=speed)
+        else:
+            action = "on" if "on" in text or "start" in text else "off"
+            return jsonify(success=True, device=device, action=action)
+
+    # ------------------- LIGHT --------------------
     elif "light" in text or "bulb" in text:
         device = "light"
         action = "on" if "on" in text or "start" in text else "off"
+        return jsonify(success=True, device=device, action=action)
+
+    # ------------------- AC -----------------------
     elif any(word in text for word in ["ac", "a c", "air conditioner"]):
         device = "ac"
-        action = "on" if "on" in text or "start" in text else "off"
+        temp_match = re.search(r'(\d{2})\s?(degrees|°|c)?', text)
+        if temp_match:
+            temperature = temp_match.group(1)
+            return jsonify(success=True, device=device, action="set_temp", temperature=temperature)
+        else:
+            action = "on" if "on" in text or "start" in text else "off"
+            return jsonify(success=True, device=device, action=action)
+
+    # ------------------- TV -----------------------
     elif "tv" in text or "television" in text:
         device = "tv"
-        action = "on" if "on" in text or "start" in text else "off"
-    elif "music" in text or "music system" in text or "speaker" in text:
+        if any(word in text for word in ["volume up", "increase volume", "louder"]):
+            return jsonify(success=True, device=device, action="volume_up")
+        elif any(word in text for word in ["volume down", "decrease volume", "lower"]):
+            return jsonify(success=True, device=device, action="volume_down")
+        elif "mute" in text:
+            return jsonify(success=True, device=device, action="mute")
+        else:
+            action = "on" if "on" in text or "start" in text else "off"
+            return jsonify(success=True, device=device, action=action)
+
+    # ------------------- MUSIC --------------------
+    elif "music" in text or "speaker" in text:
         device = "music"
-        action = "on" if "on" in text or "start" in text or "play" in text else "off"
-    elif "party" in text or "party mode" in text:
-        device = "party"
-        action = "on" if "on" in text or "start" in text or "activate" in text else "off"
+        if any(word in text for word in ["volume up", "increase volume", "louder"]):
+            return jsonify(success=True, device=device, action="volume_up")
+        elif any(word in text for word in ["volume down", "decrease volume", "lower"]):
+            return jsonify(success=True, device=device, action="volume_down")
+        elif "mute" in text:
+            return jsonify(success=True, device=device, action="mute")
+        elif any(word in text for word in ["play", "start", "on"]):
+            return jsonify(success=True, device=device, action="on")
+        else:
+            return jsonify(success=True, device=device, action="off")
+
+    # ------------------- CURTAIN -------------------
     elif "curtain" in text:
         device = "curtain"
         action = "open" if "open" in text or "start" in text else "close"
-
-    if device and action:
         return jsonify(success=True, device=device, action=action)
-    else:
-        return jsonify(success=False, message="No recognizable smart command")
 
+    # ------------------- PARTY MODE ----------------
+    elif "party" in text or "party mode" in text:
+        device = "party"
+        action = "on" if "on" in text or "start" in text or "activate" in text else "off"
+        return jsonify(success=True, device=device, action=action)
+
+    return jsonify(success=False, message="No recognizable smart command")
 
 #google map---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -419,14 +462,66 @@ def webhook():
         })
 
 
+
     elif intent == 'Smart Device Control':
+
         user_text = req.get('queryResult', {}).get('queryText', '')
+
         with app.test_request_context(json={'text': user_text}):
+
             resp = json.loads(device_control().get_data(as_text=True))
+
         if resp['success']:
-            reply = f"{resp['device'].capitalize()} has been turned {resp['action']}"
+
+            device = resp['device'].capitalize()
+
+            action = resp['action']
+
+            if device == "Ac" and action == "set_temp":
+
+                reply = f"Setting AC to {resp['temperature']} degrees"
+
+            elif device == "Fan" and action == "set_speed":
+
+                reply = f"Fan speed set to {resp['speed']}"
+
+            elif device == "Tv" and action in ["volume_up", "volume_down", "mute"]:
+
+                if action == "volume_up":
+
+                    reply = "TV volume increased"
+
+                elif action == "volume_down":
+
+                    reply = "TV volume decreased"
+
+                else:
+
+                    reply = "TV is now muted"
+
+            elif device == "Music" and action in ["volume_up", "volume_down", "mute"]:
+
+                if action == "volume_up":
+
+                    reply = "Music volume increased"
+
+                elif action == "volume_down":
+
+                    reply = "Music volume decreased"
+
+                else:
+
+                    reply = "Music is now muted"
+
+            else:
+
+                reply = f"{device} has been turned {action}"
+
+
         else:
+
             reply = "Sorry, I couldn't understand the smart command."
+
 
     elif intent == 'Nearby Doctors':
         reply = "To find nearby doctors, please open the app and click the 'Find Nearby Doctors' button for the map and list."

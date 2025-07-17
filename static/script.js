@@ -355,7 +355,7 @@ function handleSmartCommand() {
 function runSmartCommand(text) {
   const box = document.getElementById("responseBox");
 
-  fetch("https://funnyfriend.onrender.com/device_control", {
+  fetch("http://127.0.0.1:8000/device_control", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: text })
@@ -366,38 +366,72 @@ function runSmartCommand(text) {
         const { device, action } = data;
 
         if (device === "fan") {
-          animateFan(action === "on");
-          box.innerHTML += `<p>🌀 Fan turned ${action.toUpperCase()}</p>`;
-          speak(`Fan is now ${action}`);
+          if (action === "set_speed") {
+            box.innerHTML += `<p>🌀 Fan speed set to ${data.speed}</p>`;
+            speak(`Fan speed set to ${data.speed}`);
+          } else {
+            animateFan(action === "on");
+            box.innerHTML += `<p>🌀 Fan turned ${action.toUpperCase()}</p>`;
+            speak(`Fan is now ${action}`);
+          }
+
         } else if (device === "light") {
           toggleLamp(action === "on");
           box.innerHTML += `<p>💡 Light turned ${action.toUpperCase()}</p>`;
           speak(`Light is now ${action}`);
+
         } else if (device === "ac") {
-          animateAC(action === "on");
-          box.innerHTML += `<p>❄️ AC turned ${action.toUpperCase()}</p>`;
-          speak(`AC is now ${action}`);
+          if (action === "set_temp") {
+            box.innerHTML += `<p>❄️ AC set to ${data.temperature}°C</p>`;
+            speak(`Setting AC to ${data.temperature} degrees`);
+          } else {
+            animateAC(action === "on");
+            box.innerHTML += `<p>❄️ AC turned ${action.toUpperCase()}</p>`;
+            speak(`AC is now ${action}`);
+          }
+
         } else if (device === "tv") {
-          toggleNetflixLogo(action === "on");  // ✅ Controls logo state
-          box.innerHTML += `<p>📺 TV turned ${action.toUpperCase()}</p>`;
-          speak(`TV is now ${action}`);
+          if (action === "volume_up") {
+            speak("TV volume increased");
+            box.innerHTML += `<p>🔊 TV volume increased</p>`;
+          } else if (action === "volume_down") {
+            speak("TV volume decreased");
+            box.innerHTML += `<p>🔉 TV volume decreased</p>`;
+          } else if (action === "mute") {
+            speak("TV is now muted");
+            box.innerHTML += `<p>🔇 TV muted</p>`;
+          } else {
+            toggleNetflixLogo(action === "on");
+            box.innerHTML += `<p>📺 TV turned ${action.toUpperCase()}</p>`;
+            speak(`TV is now ${action}`);
+          }
+
+        } else if (device === "music") {
+          if (action === "volume_up") {
+            speak("Music volume increased");
+            box.innerHTML += `<p>🔊 Music volume increased</p>`;
+          } else if (action === "volume_down") {
+            speak("Music volume decreased");
+            box.innerHTML += `<p>🔉 Music volume decreased</p>`;
+          } else if (action === "mute") {
+            speak("Music is now muted");
+            box.innerHTML += `<p>🔇 Music muted</p>`;
+          } else {
+            animateMusic(action === "on");
+            box.innerHTML += `<p>🎵 Music System ${action.toUpperCase()}</p>`;
+            speak(`Music system is now ${action}`);
+          }
+
         } else if (device === "curtain") {
           animateVerticalCurtain(action === "open");
           box.innerHTML += `<p>🪟 Curtain ${action.toUpperCase()}</p>`;
           speak(`Curtain is now ${action}`);
-        }
 
-          else if (device === "music") {
-          animateMusic(action === "on");
-          box.innerHTML += `<p>🎵 Music System ${action.toUpperCase()}</p>`;
-          speak(`Music system is now ${action}`);
-        }
-          else if (device === "party") {
+        } else if (device === "party") {
           togglePartyMode(action === "on");
           box.innerHTML += `<p>🎉 Party Mode ${action.toUpperCase()}</p>`;
           speak(`Party mode is now ${action}`);
         }
-
 
       } else {
         speak("Sorry, I didn't understand.");
@@ -411,6 +445,7 @@ function runSmartCommand(text) {
       speak("Failed to send smart command.");
     });
 }
+
 
 // ✅ Fan Animation
 function animateFan(on) {

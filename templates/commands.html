@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Funny Friend - Yaymoji AI 🤖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    h1 {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      color: #2e7d32;
+    }
+    .command-card {
+      background: #e0f7e9;
+      border-left: 6px solid #2e7d32;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      height: 100%;
+    }
+    .command-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1b5e20;
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 4rem 4rem;
+      font-weight: 500;
+      color: #2e7d32;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .fixed-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ✅ Header -->
+<header class="custom-header">
+  <div class="header-title">
+    <h2 class="mb-0">🤖</h2>
+  </div>
+</header>
+
+<div class="container">
+  <h1 class="text-center">📋 Smart Commands Guide</h1>
+
+  <!-- ✅ Grid of Command Cards (3 columns on desktop, 2 on tablet, 1 on mobile) -->
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">🌀 Fan</div>
+        <div>➤ fan on<br>➤ fan off<br>➤ fan speed 5</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">💡 Light</div>
+        <div>➤ light on<br>➤ light off</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">❄️ AC</div>
+        <div>➤ AC on<br>➤ AC off<br>➤ AC 19 degree</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">📺 TV</div>
+        <div>➤ TV on/off<br>➤ TV volume up/down<br>➤ TV mute </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">🎵 Music System</div>
+        <div>➤ Music on/off<br>➤ Music volume up/down<br>➤ Music mute</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">🪟 Curtain</div>
+        <div>➤ Curtain open/close</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="command-card">
+        <div class="command-title">🎉 Party Mode</div>
+        <div>➤ Party mode on/off</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Back Button -->
+  <a id="backLink" href="/" class="back-link">← Back to Funny Friend App</a>
+</div>
+
+<!-- ✅ Footer -->
+<footer class="fixed-footer">
+  <div class="footer-text">All rights reserved © 2025</div>
+  <div class="dropdown ms-auto">
+    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      🎨 Theme
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="/">🎩 Classic Theme</a></li>
+      <li><a class="dropdown-item" href="/woodland_mix">🌳 Woodland Mix</a></li>
+      <li><a class="dropdown-item" href="/playful">🎨 Playful Theme</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ✅ Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ✅ Flask JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const fromPath = urlParams.get("from") || "/";
+  document.getElementById("backLink").href = fromPath;
+</script>
+</body>
+</html>
